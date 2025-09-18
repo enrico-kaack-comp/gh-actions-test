@@ -1,4 +1,4 @@
-name: "Do Not Merge Label Blocker"
+name: "Label Blocker"
 
 on:
   pull_request:
@@ -14,4 +14,13 @@ jobs:
       - name: Fail if 'do-not-merge' label is present
         run: |
           echo "The 'do-not-merge' label is present. Remove to succeed the job."
+          exit 1
+
+  release-note-missing-block:
+    if: ${{ !contains(toJSON(github.event.pull_request.labels.*.name), '"release-notes/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if no release-notes label is present
+        run: |
+          echo "A label starting with 'release-notes/' is required."
           exit 1
