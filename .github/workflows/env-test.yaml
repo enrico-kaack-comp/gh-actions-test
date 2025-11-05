@@ -22,9 +22,9 @@ jobs:
           echo "Run two..."
   
   cleanup:
-    if: needs.two.result == 'success' || needs.two.result == 'failure'    
+    if: always() && needs.one.result == 'success'  
     runs-on: ubuntu-latest
-    needs: [two]
+    needs: [one, two]
     steps:
       - name: Cleanup
         run: |
