@@ -20,3 +20,12 @@ jobs:
       - name: Run two
         run: |
           echo "Run two..."
+  
+  cleanup:
+    if: always()
+    runs-on: ubuntu-latest
+    needs: [two]
+    steps:
+      - name: Cleanup
+        run: |
+          echo "Cleanup step..."
