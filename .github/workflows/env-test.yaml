@@ -15,7 +15,6 @@ jobs:
 
   two:
     runs-on: ubuntu-latest
-    environment: pr-e2e-approval
     needs: one
     steps:      
       - name: Run two
