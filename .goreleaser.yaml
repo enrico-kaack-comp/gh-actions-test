@@ -1,0 +1,10 @@
+version: 2
+
+builds:
+  - skip: true
+
+release:
+  draft: false
+
+changelog:
+  use: github-native
